@@ -11,7 +11,7 @@ public class UserControler {
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public ModelAndView allUsers(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("allUsers");
+        modelAndView.setViewName("pages/allUsers");
         return modelAndView;
     }
 }

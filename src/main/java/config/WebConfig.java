@@ -11,11 +11,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @ComponentScan(basePackages = "java")
 public class WebConfig {
-
     @Bean
     ViewResolver viewResolver(){
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/");
+        viewResolver.setPrefix("/pages/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
