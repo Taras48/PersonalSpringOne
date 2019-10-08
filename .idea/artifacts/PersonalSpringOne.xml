@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="PersonalSpringOne">
+    <output-path>$PROJECT_DIR$/out/artifacts/PersonalSpringOne</output-path>
+    <root id="archive" name="PersonalSpringOne.war" />
+  </artifact>
+</component>
