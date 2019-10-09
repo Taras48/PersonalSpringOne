@@ -1,6 +1,6 @@
-package dao;
+package com.spring.dao;
 
-import model.User;
+import com.spring.model.User;
 
 import java.util.List;
 
