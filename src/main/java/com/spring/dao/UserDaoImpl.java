@@ -36,7 +36,7 @@ public class UserDaoImpl implements UserDao {
 
     public void deletUser(Long id) {
         Session session = sessionFactory.getCurrentSession();
-        User user = (User) session.get(User.class, id);
+        User user = session.get(User.class, id);
         session.delete(user);
         System.out.println("user delete");
 
@@ -44,7 +44,7 @@ public class UserDaoImpl implements UserDao {
 
     public User getUserById(Long id) {
         Session session = sessionFactory.getCurrentSession();
-        User user = (User) session.get(User.class, id);
+        User user = session.get(User.class, id);
         System.out.println("user get by id");
         return user;
     }
