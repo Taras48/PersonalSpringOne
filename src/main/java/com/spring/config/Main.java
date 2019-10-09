@@ -1,3 +1,4 @@
+/*
 package com.spring.config;
 
 import com.spring.dao.UserDaoImpl;
@@ -14,12 +15,15 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppInitializer.class);
 
-       /* List<User> userList = context.getBean(UserDaoImpl.class).getAllUsers();
+       */
+/* List<User> userList = context.getBean(UserDaoImpl.class).getAllUsers();
         for (User elem :userList) {
             System.out.println(elem);
-        }*/
+        }*//*
+
 
        User user = context.getBean(UserDaoImpl.class).getUserById(1L);
         System.out.println(user.getMessage());
     }
 }
+*/

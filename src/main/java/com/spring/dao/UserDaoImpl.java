@@ -24,7 +24,6 @@ public class UserDaoImpl implements UserDao {
     public void addUser(User user) {
         Session session = sessionFactory.getCurrentSession();
         session.save(user);
-        session.close();
         System.out.println("user add ");
 
     }
@@ -32,7 +31,6 @@ public class UserDaoImpl implements UserDao {
     public void updateUser(User user) {
         Session session = sessionFactory.getCurrentSession();
         session.update(user);
-        session.close();
         System.out.println("user update");
     }
 
@@ -40,7 +38,6 @@ public class UserDaoImpl implements UserDao {
         Session session = sessionFactory.getCurrentSession();
         User user = (User) session.get(User.class, id);
         session.delete(user);
-        session.close();
         System.out.println("user delete");
 
     }
@@ -48,8 +45,7 @@ public class UserDaoImpl implements UserDao {
     public User getUserById(Long id) {
         Session session = sessionFactory.getCurrentSession();
         User user = (User) session.get(User.class, id);
-        session.close();
-        System.out.println("user get by id ");
+        System.out.println("user get by id");
         return user;
     }
 
@@ -58,8 +54,7 @@ public class UserDaoImpl implements UserDao {
         Transaction transaction = session.beginTransaction();
         List<User> listUsers = session.createQuery("from user").list();
         transaction.commit();
-        session.close();
-        System.out.println("get all users ");
+        System.out.println("get all users");
         return listUsers;
     }
 
