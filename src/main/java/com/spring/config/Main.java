@@ -1,20 +1,25 @@
 package com.spring.config;
 
+import com.spring.dao.UserDaoImpl;
+import com.spring.model.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/db_example";
-        String name ="root";
-        String pass ="root";
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppInitializer.class);
 
-        try (Connection connection = DriverManager.getConnection(url,name,pass)){
-            System.out.println("ok");
-        } catch (SQLException e) {
-            System.out.println("no");
-            e.printStackTrace();
-        }
+       /* List<User> userList = context.getBean(UserDaoImpl.class).getAllUsers();
+        for (User elem :userList) {
+            System.out.println(elem);
+        }*/
+
+       User user = context.getBean(UserDaoImpl.class).getUserById(1L);
+        System.out.println(user.getMessage());
     }
 }
