@@ -8,6 +8,12 @@ import javax.persistence.*;
 public class User {
     public User(){}
 
+    public User(String name, Long password, String message) {
+        this.name = name;
+        this.password = password;
+        this.message = message;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -58,7 +64,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", password=" + password +
+                ", password=" + //password +
                 ", message='" + message + '\'' +
                 '}';
     }

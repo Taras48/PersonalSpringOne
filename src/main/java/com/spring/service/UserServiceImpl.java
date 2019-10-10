@@ -1,6 +1,7 @@
 package com.spring.service;
 
 import com.spring.dao.UserDao;
+import com.spring.dao.UserDaoImpl;
 import com.spring.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
 
-    private UserDao userDao;
+    private UserDao userDao = new UserDaoImpl();
 
     @Autowired
     public void setUserDao(UserDao userDao) {
