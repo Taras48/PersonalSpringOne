@@ -1,6 +1,7 @@
 package com.spring.controller;
 
 import com.spring.model.User;
+import com.spring.service.UserService;
 import com.spring.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,34 +13,33 @@ import org.springframework.web.servlet.ModelAndView;
 @ComponentScan(basePackages = "com.spring.service")
 public class UserController {
 
-    private UserServiceImpl userService = new UserServiceImpl();
-    /*
+    private UserService userService;
+
     @Autowired
-    public void setUserService(UserServiceImpl userService) {
+    public void setUserService(UserService userService) {
         this.userService = userService;
-    }*/
+    }
 
     @PostMapping(value = "add")
     public ModelAndView addUserPost(User messageUser) {
         ModelAndView modelAndView = new ModelAndView();
-        User user = new User();
-        user.setName(messageUser.getName());
-        user.setMessage(messageUser.getMessage());
         userService.addUser(messageUser);
         modelAndView.setViewName("redirect:/");
         return modelAndView;
     }
 
     @PostMapping(value = "delete")
-    public ModelAndView deleteUsersPost() {
+    public ModelAndView deleteUsersPost(Long id) {
         ModelAndView modelAndView = new ModelAndView();
+        userService.deletUser(id);
         modelAndView.setViewName("redirect:/");
         return modelAndView;
     }
 
     @PostMapping(value = "update")
-    public ModelAndView updateUsersPost() {
+    public ModelAndView updateUsersPost(User messageUser) {
         ModelAndView modelAndView = new ModelAndView();
+        userService.updateUser(messageUser);
         modelAndView.setViewName("redirect:/");
         return modelAndView;
     }
@@ -47,7 +47,7 @@ public class UserController {
     @GetMapping(value = "/")//поставил заглушку
     public ModelAndView allUsers() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("list", null);
+        modelAndView.addObject("list", userService.getAllUsers());
         modelAndView.setViewName("allUsers");
         return modelAndView;
     }

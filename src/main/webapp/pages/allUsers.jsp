@@ -11,13 +11,13 @@
     <a href="/delete">Delete Users</a> |
 </p>
 <c:if test="${list.size() > 0}">
-    <table>
+    <table border="1px solid black">
         <tr>
             <td>Id</td>
             <td>Name</td>
             <td>Message</td>
         </tr>
-        <c:forEach var="user" items="list">
+        <c:forEach var="user" items="${list}">
             <tr>
                 <td>${user.getId()}</td>
                 <td>${user.getName()}</td>
@@ -28,8 +28,7 @@
     </table>
 </c:if>
 <c:if test="${list.size() == 0}">
-    <c:out value="${var}" default="Table is emty!"/>
-    <%--<h3>Table is empty</h3>--%>
+      <h3>Table is empty</h3>
 </c:if>
 </body>
 </html>
