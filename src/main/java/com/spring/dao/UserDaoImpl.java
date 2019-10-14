@@ -25,7 +25,6 @@ public class UserDaoImpl implements UserDao {
         Session session = sessionFactory.getCurrentSession();
         session.save(user);
         System.out.println("user add ");
-
     }
 
     public void updateUser(User user) {
@@ -39,7 +38,6 @@ public class UserDaoImpl implements UserDao {
         User user = session.get(User.class, id);
         session.delete(user);
         System.out.println("user delete");
-
     }
 
     public User getUserById(Long id) {

@@ -19,13 +19,9 @@ public class User {
 
     @Column(name = "message")
     private String message;
+
     public User(){}
 
-    /*public User(String name, Long password, String message) {
-        this.name = name;
-        this.password = password;
-        this.message = message;
-    }*/
 
     public Long getId() {
         return id;

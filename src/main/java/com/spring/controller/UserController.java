@@ -2,7 +2,6 @@ package com.spring.controller;
 
 import com.spring.model.User;
 import com.spring.service.UserService;
-import com.spring.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -31,7 +30,7 @@ public class UserController {
     @PostMapping(value = "delete")
     public ModelAndView deleteUsersPost(Long id) {
         ModelAndView modelAndView = new ModelAndView();
-        userService.deletUser(id);
+        userService.deleteUser(id);
         modelAndView.setViewName("redirect:/");
         return modelAndView;
     }
@@ -44,32 +43,31 @@ public class UserController {
         return modelAndView;
     }
 
-    @GetMapping(value = "/")//поставил заглушку
-    public ModelAndView allUsers() {
-        ModelAndView modelAndView = new ModelAndView();
+    @GetMapping(value = "/")
+    public ModelAndView allUsers(ModelAndView modelAndView) {
         modelAndView.addObject("list", userService.getAllUsers());
-        modelAndView.setViewName("allUsers");
+        modelAndView.setViewName("admin/allUsers");
         return modelAndView;
     }
 
     @GetMapping(value = "add")
     public ModelAndView addUser() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("addUser");
+        modelAndView.setViewName("admin/addUser");
         return modelAndView;
     }
 
     @GetMapping(value = "delete")
     public ModelAndView deleteUsers() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("deleteUser");
+        modelAndView.setViewName("admin/deleteUser");
         return modelAndView;
     }
 
     @GetMapping(value = "update")
     public ModelAndView updateUsers() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("updateUser");
+        modelAndView.setViewName("admin/updateUser");
         return modelAndView;
     }
 
