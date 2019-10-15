@@ -16,12 +16,14 @@
             <td>Id</td>
             <td>Name</td>
             <td>Message</td>
+            <td>Role</td>
         </tr>
         <c:forEach var="user" items="${list}">
             <tr>
                 <td>${user.getId()}</td>
                 <td>${user.getName()}</td>
                 <td>${user.getMessage()}</td>
+                <td>${user.getRoles()}</td>
             </tr>
 
         </c:forEach>

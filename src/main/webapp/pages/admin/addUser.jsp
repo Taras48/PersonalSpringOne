@@ -18,6 +18,7 @@
 </p>
 <form action="/add" method="post">
     Name:<input type="text" name="name">
+    Role:<input type="text" name="role">
     Message:<input type="text" name="message"><br/><br/>
     <button>Add user</button>
 </form>

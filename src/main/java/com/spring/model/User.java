@@ -2,6 +2,10 @@ package com.spring.model;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -20,8 +24,28 @@ public class User {
     @Column(name = "message")
     private String message;
 
-    public User(){}
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> roles = new ArrayList<Role>();
+
+
+    public User() {
+    }
+
+    public String getRoles() {
+        String allRoles = "";
+        for (Role role : roles) {
+            allRoles += role.toString() + "\n";
+        }
+        return allRoles;
+    }
+
+    public void setRoles(Role roles) {
+        this.roles.add(roles);
+    }
 
     public Long getId() {
         return id;
