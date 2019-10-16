@@ -16,6 +16,7 @@
         <tr>
             <td>Id</td>
             <td>Name</td>
+            <td>Password</td>
             <td>Message</td>
             <td>Role</td>
         </tr>
@@ -23,6 +24,7 @@
             <tr>
                 <td>${user.getId()}</td>
                 <td>${user.getName()}</td>
+                <td>${user.getPassword()}</td>
                 <td>${user.getMessage()}</td>
                 <td>${user.getRoles()}</td>
             </tr>

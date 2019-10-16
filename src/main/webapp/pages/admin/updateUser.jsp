@@ -20,6 +20,7 @@
 <form action="/update" method="post">
     ID:<input type="number" name="id">
     Name:<input type="text" name="name">
+    Password:<input type="text" name="password">
     Role:<input type="text" name="role">
     Message:<input type="text" name="message"><br/><br/>
     <button>Update user</button>

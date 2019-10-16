@@ -13,7 +13,7 @@
 <body>
 <form action="/index" method="post">
     Name:<input type="text" name="name">
-    Password:<input type="number" name="password"><br/><br/>
+    Password:<input type="text" name="password"><br/><br/>
     <button>Sign in</button>
 </form>
 
