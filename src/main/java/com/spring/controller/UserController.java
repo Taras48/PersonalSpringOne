@@ -22,6 +22,22 @@ public class UserController {
         this.roleService = roleService;
     }
 
+    @GetMapping(value = "index")
+    public String getIndexGet(){
+        return "index";
+    }
+
+    @PostMapping(value = "index")
+    public ModelAndView getIndexPost(ModelAndView modelAndView ){
+        modelAndView.setViewName("redirect:/");
+        return modelAndView;
+    }
+
+    @GetMapping(value = "user")
+    public String getUserGet(){
+        return "helloUser";
+    }
+
 
     @PostMapping(value = "add")
     public ModelAndView addUserPost(User messageUser, String role) {

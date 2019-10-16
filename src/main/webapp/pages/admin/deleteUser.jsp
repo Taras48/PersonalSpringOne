@@ -15,6 +15,7 @@
 <p><a href="/">All Users</a> |
     <a href="/update">Update Users</a> |
     <a href="/add">Add Users</a> |
+    <a href="/user">User psge</a> |
 </p>
 <form action="/delete" method="post">
     Id:<input type="number" name="id"><br/><br/>

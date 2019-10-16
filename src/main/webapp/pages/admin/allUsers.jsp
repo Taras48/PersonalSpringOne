@@ -9,6 +9,7 @@
 <p><a href="/add">Add Users</a> |
     <a href="/update">Update Users</a> |
     <a href="/delete">Delete Users</a> |
+    <a href="/user">User psge</a> |
 </p>
 <c:if test="${list.size() > 0}">
     <table border="1px solid black">
