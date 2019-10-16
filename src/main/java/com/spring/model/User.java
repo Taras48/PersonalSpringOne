@@ -41,7 +41,7 @@ public class User {
     public String getRoles() {
         String allRoles = "";
         for (Role role : roles) {
-            allRoles += role.toString() + "\n";
+            allRoles += role.toString();
         }
         return allRoles;
     }
