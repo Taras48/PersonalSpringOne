@@ -23,18 +23,18 @@ public class UserController {
     }
 
     @GetMapping(value = "index")
-    public String getIndexGet(){
+    public String getIndexGet() {
         return "index";
     }
 
     @PostMapping(value = "index")
-    public ModelAndView getIndexPost(ModelAndView modelAndView ){
+    public ModelAndView getIndexPost(ModelAndView modelAndView) {
         modelAndView.setViewName("redirect:/");
         return modelAndView;
     }
 
     @GetMapping(value = "user")
-    public String getUserGet(){
+    public String getUserGet() {
         return "helloUser";
     }
 
@@ -59,8 +59,9 @@ public class UserController {
     @PostMapping(value = "update")
     public ModelAndView updateUsersPost(User messageUser, String role) {
         ModelAndView modelAndView = new ModelAndView();
-        messageUser.setRoles(roleService.getRoleByString(role));
-        userService.updateUser(messageUser);
+        User user = userService.getUserById(messageUser.getId());
+        user.setRoles(roleService.getRoleByString(role));
+        userService.updateUser(user);
         modelAndView.setViewName("redirect:/");
         return modelAndView;
     }
