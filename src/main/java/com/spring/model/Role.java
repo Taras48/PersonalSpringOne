@@ -19,7 +19,6 @@ public class Role {
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
-
     //@ManyToMany(mappedBy = "roles")
     private Set<User> user = new HashSet<User>();
 
@@ -53,6 +52,6 @@ public class Role {
 
     @Override
     public String toString() {
-        return  role;
+        return  role ;
     }
 }

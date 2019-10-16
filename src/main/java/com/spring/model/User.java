@@ -2,9 +2,8 @@ package com.spring.model;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -29,10 +28,14 @@ public class User {
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> roles = new ArrayList<Role>();
+    private Set<Role> roles = new HashSet<Role>();
 
 
     public User() {
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public String getRoles() {
@@ -43,8 +46,8 @@ public class User {
         return allRoles;
     }
 
-    public void setRoles(Role roles) {
-        this.roles.add(roles);
+    public void setRoles(Role role) {
+        roles.add(role);
     }
 
     public Long getId() {
@@ -77,6 +80,27 @@ public class User {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(roles, user.roles);
+    }
+
+    @Override
+    public int hashCode() {
+       final  int numb = 31;
+       int result = 1;
+       result = numb * result + ((id == null)? 0 : id.hashCode());
+       result = numb * result + ((password == null)? 0 : password.hashCode());
+       return  result;
     }
 
     @Override
