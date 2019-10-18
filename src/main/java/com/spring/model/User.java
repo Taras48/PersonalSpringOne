@@ -43,6 +43,31 @@ public class User implements UserDetails {
         return roles;
     }
 
+    @Override
+    public String getUsername() {
+        return name;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
@@ -79,31 +104,6 @@ public class User implements UserDetails {
         return password;
     }
 
-    @Override
-    public String getUsername() {
-        return name;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -130,11 +130,11 @@ public class User implements UserDetails {
 
     @Override
     public int hashCode() {
-       final  int numb = 31;
-       int result = 1;
-       result = numb * result + ((id == null)? 0 : id.hashCode());
-       result = numb * result + ((password == null)? 0 : password.hashCode());
-       return  result;
+        final int numb = 31;
+        int result = 1;
+        result = numb * result + ((id == null) ? 0 : id.hashCode());
+        result = numb * result + ((password == null) ? 0 : password.hashCode());
+        return result;
     }
 
     @Override
