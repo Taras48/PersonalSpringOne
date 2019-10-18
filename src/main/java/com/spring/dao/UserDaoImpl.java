@@ -5,8 +5,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
+
 
 import java.util.List;
 
@@ -45,6 +46,14 @@ public class UserDaoImpl implements UserDao {
         User user = session.get(User.class, id);
         System.out.println("user get by id");
         return user;
+    }
+
+    @Override
+    public User getUserByName(String name) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from User where name = :name");
+        query.setParameter("name", name);
+        return (User) query.uniqueResult();
     }
 
     public List<User> getAllUsers() {
