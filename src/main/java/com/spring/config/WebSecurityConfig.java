@@ -32,6 +32,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
+       /* auth.inMemoryAuthentication().withUser("user1").password("$2a$10$z6yOIMaX5/4n1Ps2KbAUGejNcqPEtvt/QgtoNTw6Lz8aWN5dtXNSK").roles("user");
+        auth.inMemoryAuthentication().withUser("admin").password("$2a$10$bjUikoAj9nUEFv4UDNHvOOjxpCLb0/5I3pybtWYxxsd1TQDTFjhPe").roles("admin");*/
+
         auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder);//прикрутить декодер!!!
     }
 
@@ -39,8 +42,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/admin/**").hasAuthority("admin")
-                .antMatchers("/helloUser").hasAnyAuthority("user","admin")
+                .antMatchers("/admin/**").hasRole("admin")
+                .antMatchers("/helloUser").hasAnyRole("admin", "user")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -48,6 +51,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .usernameParameter("name")
                 .passwordParameter("password")
+                //.loginProcessingUrl("/admin")
+               // .defaultSuccessUrl("/admin", true)
                 .and()
                 .csrf().disable();//прочитать что это такое!!!
     }

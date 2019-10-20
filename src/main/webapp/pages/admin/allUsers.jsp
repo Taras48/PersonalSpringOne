@@ -6,10 +6,10 @@
 </head>
 <body>
 <h1>All Users</h1>
-<p><a href="/add">Add Users</a> |
-    <a href="/update">Update Users</a> |
-    <a href="/delete">Delete Users</a> |
-    <a href="/user">User psge</a> |
+<p><a href="/admin/add">Add Users</a> |
+    <a href="/admin/update">Update Users</a> |
+    <a href="/admin/delete">Delete Users</a> |
+    <a href="/helloUser">User psge</a> |
 </p>
 <c:if test="${list.size() > 0}">
     <table border="1px solid black">

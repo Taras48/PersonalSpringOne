@@ -12,12 +12,12 @@
 </head>
 <body>
 <h1>Update User</h1>
-<p><a href="/">All Users</a> |
-    <a href="/add">add Users</a> |
-    <a href="/delete">Delete Users</a> |
-    <a href="/user">User psge</a> |
+<p><a href="/admin">All Users</a> |
+    <a href="/admin/add">add Users</a> |
+    <a href="/admin/delete">Delete Users</a> |
+    <a href="/helloUser">User psge</a> |
 </p>
-<form action="/update" method="post">
+<form action="/admin/update" method="post">
     ID:<input type="number" name="id">
     Name:<input type="text" name="name">
     Password:<input type="text" name="password">
