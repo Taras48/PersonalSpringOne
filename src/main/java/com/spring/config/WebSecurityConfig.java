@@ -32,7 +32,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-       // auth.inMemoryAuthentication().withUser("admin").password("$2y$12$8LJ1I6DTTged3biXw3e9ie6WuXUqmPNMaEOCD553gCQWVFeyzHohK").roles("admin");
         auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder);//прикрутить декодер!!!
     }
 
@@ -40,14 +39,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/admin/**").hasAnyAuthority("admin")
-                .antMatchers("/helloUser").hasAnyAuthority("admin", "user")
+                .antMatchers("/admin/**").hasAuthority("admin")
+                .antMatchers("/helloUser").hasAnyAuthority("user","admin")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
                 .usernameParameter("name")
+                .passwordParameter("password")
                 .and()
                 .csrf().disable();//прочитать что это такое!!!
     }

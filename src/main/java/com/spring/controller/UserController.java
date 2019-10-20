@@ -33,7 +33,7 @@ public class UserController {
         return modelAndView;
     }*/
 
-    @GetMapping(value = "/user")
+    @PostMapping(value = "/helloUser")
     public String getUserGet() {
         return "helloUser";
     }
