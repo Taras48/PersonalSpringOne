@@ -22,24 +22,24 @@ public class UserController {
         this.roleService = roleService;
     }
 
-    @GetMapping(value = "index")
+    @GetMapping(value = "/login")
     public String getIndexGet() {
-        return "index";
+        return "login";
     }
 
-    @PostMapping(value = "index")
+    /*@PostMapping(value = "login")
     public ModelAndView getIndexPost(ModelAndView modelAndView) {
         modelAndView.setViewName("redirect:/");
         return modelAndView;
-    }
+    }*/
 
-    @GetMapping(value = "user")
+    @GetMapping(value = "/user")
     public String getUserGet() {
         return "helloUser";
     }
 
 
-    @PostMapping(value = "add")
+    @PostMapping(value = "/add")
     public ModelAndView addUserPost(User messageUser, String role) {
         ModelAndView modelAndView = new ModelAndView();
         messageUser.setRoles(roleService.getRoleByString(role));
@@ -48,7 +48,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @PostMapping(value = "delete")
+    @PostMapping(value = "/delete")
     public ModelAndView deleteUsersPost(Long id) {
         ModelAndView modelAndView = new ModelAndView();
         userService.deleteUser(id);
@@ -56,7 +56,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @PostMapping(value = "update")
+    @PostMapping(value = "/update")
     public ModelAndView updateUsersPost(User messageUser, String role) {
         ModelAndView modelAndView = new ModelAndView();
         User user = userService.getUserById(messageUser.getId());
@@ -73,21 +73,21 @@ public class UserController {
         return modelAndView;
     }
 
-    @GetMapping(value = "add")
+    @GetMapping(value = "/add")
     public ModelAndView addUser() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("admin/addUser");
         return modelAndView;
     }
 
-    @GetMapping(value = "delete")
+    @GetMapping(value = "/delete")
     public ModelAndView deleteUsers() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("admin/deleteUser");
         return modelAndView;
     }
 
-    @GetMapping(value = "update")
+    @GetMapping(value = "/update")
     public ModelAndView updateUsers() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("admin/updateUser");

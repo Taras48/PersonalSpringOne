@@ -55,7 +55,7 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String toString() {
-        return  role + "<br/>" ;
+        return  role;
     }
 
     @Override
