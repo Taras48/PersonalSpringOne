@@ -25,16 +25,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private  AuthenticationSuccessHandler myAuthenticationSuccessHandler;
+    private AuthenticationSuccessHandler myAuthenticationSuccessHandler;
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
-        return new AuthenticationSuccessHandlerImpl();
     }
 
 
@@ -51,8 +46,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/helloUser").hasAnyRole("admin", "user")
+                .antMatchers("/admin/**").hasAuthority("admin")
+                .antMatchers("/helloUser").hasAnyAuthority("admin", "user")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -61,8 +56,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .usernameParameter("name")
                 .passwordParameter("password")
-               // .loginProcessingUrl("/admin")
-              // .defaultSuccessUrl("/admin", true)
                 .and()
                 .csrf().disable();//прочитать что это такое!!!
     }
