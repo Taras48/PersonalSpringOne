@@ -42,17 +42,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/admin/**").hasRole("admin")
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/helloUser").hasAnyRole("admin", "user")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .successHandler()
                 .permitAll()
                 .usernameParameter("name")
                 .passwordParameter("password")
-                //.loginProcessingUrl("/admin")
-               // .defaultSuccessUrl("/admin", true)
+               // .loginProcessingUrl("/admin")
+              // .defaultSuccessUrl("/admin", true)
                 .and()
                 .csrf().disable();//прочитать что это такое!!!
     }

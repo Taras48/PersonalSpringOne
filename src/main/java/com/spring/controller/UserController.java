@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
+
 @Controller
 @ComponentScan(basePackages = "com.spring.service")
 public class UserController {
@@ -26,6 +28,8 @@ public class UserController {
     public String getIndexGet() {
         return "login";
     }
+
+
 
     /*@PostMapping(value = "login")
     public ModelAndView getIndexPost(ModelAndView modelAndView) {
