@@ -5,9 +5,13 @@ import com.spring.model.User;
 import java.util.List;
 
 public interface UserService {
-    public void addUser(User user);
-    public void updateUser(User user);
-    public void deleteUser(Long id);
-    public User getUserById(Long id);
-    public List<User> getAllUsers();
+    void addUser(User user);
+
+    void updateUser(User user);
+
+    void deleteUser(Long id);
+
+    User getUserById(Long id);
+
+    List<User> getAllUsers();
 }

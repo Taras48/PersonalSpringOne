@@ -72,12 +72,8 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public String getRoles() {
-        String allRoles = "";
-        for (Role role : roles) {
-            allRoles += role.toString();
-        }
-        return allRoles;
+    public Set<Role> getRoles() {
+               return roles;
     }
 
     public void setRoles(Role role) {

@@ -12,5 +12,6 @@
 </head>
 <body>
 <h1>Hello User</h1>
+<a href="/logout">logout</a>
 </body>
 </html>
