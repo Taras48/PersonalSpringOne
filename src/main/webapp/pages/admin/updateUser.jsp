@@ -16,12 +16,16 @@
     <a href="/admin/add">add Users</a> |
     <a href="/admin/delete">Delete Users</a> |
     <a href="/helloUser">User psge</a> |
+    <a href="/logout">logout</a>
 </p>
 <form action="/admin/update" method="post">
     ID:<input type="number" name="id">
     Name:<input type="text" name="name">
     Password:<input type="password" name="password">
-    Role:<input type="text" name="role">
+    Role:<select type="text" name="role">
+    <option value="user">User</option>
+    <option value="admin">Admin</option>
+</select>
     Message:<input type="text" name="message"><br/><br/>
     <button>Update user</button>
 </form>
