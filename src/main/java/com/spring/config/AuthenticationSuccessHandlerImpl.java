@@ -25,7 +25,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
 
 
-        String targetUrl = "/login";
+        String targetUrl = "";
 
         Collection<? extends GrantedAuthority> roles = authentication.getAuthorities();
         for (GrantedAuthority role : roles) {

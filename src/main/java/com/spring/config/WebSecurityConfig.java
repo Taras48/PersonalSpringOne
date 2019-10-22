@@ -35,17 +35,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-       /* auth.inMemoryAuthentication().withUser("user1").password("$2a$10$z6yOIMaX5/4n1Ps2KbAUGejNcqPEtvt/QgtoNTw6Lz8aWN5dtXNSK").roles("user");
-        auth.inMemoryAuthentication().withUser("admin").password("$2a$10$bjUikoAj9nUEFv4UDNHvOOjxpCLb0/5I3pybtWYxxsd1TQDTFjhPe").roles("admin");*/
-
-        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder);//прикрутить декодер!!!
+        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
+                .antMatchers("/login").anonymous()
                 .antMatchers("/admin/**").hasAuthority("admin")
                 .antMatchers("/helloUser").hasAnyAuthority("admin", "user")
                 .anyRequest().authenticated()
@@ -53,13 +50,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .successHandler(myAuthenticationSuccessHandler)
-                .permitAll()
+               // .permitAll()
                 .usernameParameter("name")
                 .passwordParameter("password")
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login")
-                .permitAll()
                 .and()
                 .csrf().disable();
     }
